@@ -1,6 +1,6 @@
 ulmbe{
     "api": 10,
-    "version": 151,
+    "version": 1,
     "name": "Wireplumber Mixer",
     "id": "Wireplumber Volume Control",
     "configuration": {
@@ -71,6 +71,7 @@ ulmbe{
     ]
 
 }
+
 
 
 
