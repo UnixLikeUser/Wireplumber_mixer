@@ -33,7 +33,7 @@
                             "type": "slider",
                             "label": "Volume Percentage",
                             "default": "50",
-                            "valueChoices": ["0"-"100"]
+                            "valueChoices": 0-100
                         }
                     ]
                 }
@@ -42,7 +42,7 @@
                 {
                     "id": "com.github.orangopus.mediamixer.connector.APPcontrol",
                     "name": "Volume Mixer: APP Volume slider",
-                    "format": "Control volume for {$applicationName$} at {$volumePercentage$}%",
+                    "format": "Control volume for {$volumePercentage$}%",
                     "data": [
                         {
                             "id": "applicationName",
@@ -55,8 +55,8 @@
                             "type": "slider",
                             "label": "Volume Percentage",
                             "default": "",
-                            "valueChoices": ["0"-"100"]
-                        }
+                            "valueChoices": 0-100
+}
                     ]
                 }
             ],
@@ -72,4 +72,5 @@
     ]
 
 }
+
 
