@@ -30,10 +30,10 @@
                         },
                         {
                             "id": "volumePercentage2",
-                            "type": "choice",
+                            "type": "slider",
                             "label": "Volume Percentage",
                             "default": "50",
-                            "valueChoices": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]
+                            "valueChoices": ["0"-"100"]
                         }
                     ]
                 }
@@ -52,10 +52,10 @@
                         },
                         {
                             "id": "volumePercentage",
-                            "type": "choice",
+                            "type": "slider",
                             "label": "Volume Percentage",
                             "default": "",
-                            "valueChoices": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]
+                            "valueChoices": ["0"-"100"]
                         }
                     ]
                 }
@@ -72,3 +72,4 @@
     ]
 
 }
+
