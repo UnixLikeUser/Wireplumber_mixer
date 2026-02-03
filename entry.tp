@@ -1,4 +1,4 @@
-ulmbe{
+{
     "api": 10,
     "version": 1,
     "name": "Wireplumber Mixer",
@@ -71,6 +71,7 @@ ulmbe{
     ]
 
 }
+
 
 
 
