@@ -1,8 +1,8 @@
 {
     "sdk": 6,
     "version": 151,
-    "name": "mediamixer",
-    "id": "com.github.orangopus.mediamixer",
+    "name": "Wireplumber mediamixer",
+    "id": "Wireplumber Volume Control",
     "configuration": {
         "colorDark": "#6c6f73",
         "colorLight": "#3d62ad"
@@ -72,5 +72,6 @@
     ]
 
 }
+
 
 
