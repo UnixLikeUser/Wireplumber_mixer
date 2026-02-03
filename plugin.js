@@ -2,33 +2,15 @@ const { exec } = require('child_process');
 const TouchPortalAPI = require('touchportal-api');
 const TPClient = new TouchPortalAPI.Client();
 
-const pluginId = 'com.github.orangopus.mediamixer';
+const pluginId = 'Wireplumber control Volume';
 
 // Define the function to set application volume
 function setApplicationVolume(applicationName, volumePercentage) {
-    const findSinkInputCommand = `pactl list sink-inputs`;
+    const findSinkInputCommand = `pactl get-volume 35`;
 
-    exec(findSinkInputCommand, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error listing sink inputs: ${stderr}`);
-            return;
-        }
+      
 
-        const sinkInput = stdout.split('\n\n').find(input => input.includes(`application.name = "${applicationName}"`));
-
-        if (!sinkInput) {
-            console.error(`Application '${applicationName}' not found in sink inputs.`);
-            return;
-        }
-
-        const match = sinkInput.match(/Sink Input #(\d+)/);
-        if (!match) {
-            console.error(`Sink input index not found for application '${applicationName}'.`);
-            return;
-        }
-
-        const sinkInputIndex = match[1];
-        const setVolumeCommand = `pactl set-sink-input-volume ${sinkInputIndex} ${volumePercentage}%`;
+       const setVolumeCommand = `wpctl set-volume ${volumePercentage}%`;
 
         console.log(`Executing command: ${setVolumeCommand}`);
 
@@ -37,10 +19,10 @@ function setApplicationVolume(applicationName, volumePercentage) {
                 console.error(`Error setting volume: ${stderr}`);
                 return;
             }
-            console.log(`Set volume of '${applicationName}' to ${volumePercentage}%`);
+            console.log(`Set volume of ${volumePercentage}%`);
 
             // Send a message to Touch Portal
-            console.log(`Sending connector update for '${applicationName}' to ${volumePercentage}%`);
+            console.log(`Sending connector update for ${volumePercentage}%`);
         });
     });
 }
@@ -52,11 +34,11 @@ TPClient.on("ConnectorChange", (data) => {
     const applicationName = data.data.find(d => d.id === "applicationName").value;
     const volumePercentage = data.value;
 
-    console.log(`Received data: applicationName=${applicationName}, volumePercentage=${volumePercentage}`)
-    setApplicationVolume(applicationName, volumePercentage);
+    console.log(`Received data: volumePercentage=${volumePercentage}`)
+    setApplicationVolume(volumePercentage);
 
     if (!applicationName || isNaN(volumePercentage)) {
-        console.error(`Invalid data received: applicationName=${applicationName}, volumePercentage=${volumePercentage}`);
+        console.error(`Invalid data received: volumePercentage=${volumePercentage}`);
         return;
     }
 });
